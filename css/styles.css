@@ -2,8 +2,27 @@
 
     #table-body {
  
-        tr:nth-child(odd) > * {
+        tr:nth-child(odd) > td {
             background-color: #ffffff !important;
+        }
+    }
+
+    .product-actions {
+        vertical-align: middle;
+
+        .btn {
+            padding: 4px 0;
+            width: 24px;
+            text-align: center;
+        }
+    }
+
+    .product-description {
+        .description {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
         }
     }
 

@@ -70,7 +70,11 @@ products.forEach((prod) => {
             ${prod.name}
         </td>
         <td class="product-description">
-            ${prod.description}
+
+            <div class="description" title="${prod.description}">
+                ${prod.description}
+            </div>
+
         </td>
         <td class="product-date">
             ${prod.createdAt}
@@ -79,8 +83,12 @@ products.forEach((prod) => {
             $ ${prod.price}
         </td>
         <td class="product-actions">
-            <button class="btn btn-primary btn-sm">Editar</button>
-            <button class="btn btn-danger btn-sm">Eliminar</button>
+            <button class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-pen"></i>
+            </button>
+            <button class="btn btn-danger btn-sm">
+                <i class="fa-solid fa-trash"></i>
+            </button>
         </td>
 </tr>`
 
