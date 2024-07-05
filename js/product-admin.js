@@ -1,7 +1,7 @@
 const products = [
     {
       createdAt: -172800000,
-      name: "Nike Juniper Trail 2 GORE-TEX",
+      name: "Nike Juniper Trail 2 GORE-TEX PRO",
       image: "https://nikearprod.vtexassets.com/arquivos/ids/877894-1200-1200?width=1200&height=1200&aspect=true",
       price: 199999,
       description: "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
@@ -19,7 +19,7 @@ const products = [
     },
     {
       createdAt: 1716076800000,
-      name: "Nike Invencible 3",
+      name: "Nike Invencible 3 pro",
       image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/28810afe-6b6a-4f6a-beb4-701a3539bb02/invincible-3-zapatillas-de-running-asfalto-9lqlcK.png",
       price: 365100,
       description: "Test de imagenmmmmmm",
@@ -56,63 +56,128 @@ const products = [
 ]
 
 const tableBodyHTML = document.getElementById("table-body"); 
+// Pintar todos los productos inicialmente
+renderProducts(products)
 
-console.log(tableBodyHTML)
+function renderProducts(ARRAY_TO_RENDER) {
 
+    tableBodyHTML.innerHTML = ''
+
+    ARRAY_TO_RENDER.forEach((prod, indice) => {
+
+        tableBodyHTML.innerHTML += `<tr>
+            <td class="product-image">
+                <img src="${prod.image}" alt="${prod.name}">
+            </td>
+            <td class="product-name">
+                ${prod.name}
+            </td>
+            <td class="product-description">
+    
+                <div class="description" title="${prod.description}">
+                    ${prod.description}
+                </div>
+    
+            </td>
+            <td class="product-date">
+                ${prod.createdAt}
+            </td>
+            <td class="product-price">
+                $ ${prod.price}
+            </td>
+            <td class="product-actions">
+                <button class="btn btn-primary btn-sm">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="btn btn-danger btn-sm" onclick="deleteProduct('${prod.id}')">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </td>
+    </tr>`
+        // PARA EJERCICIO DE TAREAS USAR "indice" en deleteProduct
+
+
+    })
+}
 // Recorrer el array y hacer un console.log de cada producto
-products.forEach((prod) => {
-
-    tableBodyHTML.innerHTML += `<tr>
-        <td class="product-image">
-            <img src="${prod.image}" alt="">
-        </td>
-        <td class="product-name">
-            ${prod.name}
-        </td>
-        <td class="product-description">
-
-            <div class="description" title="${prod.description}">
-                ${prod.description}
-            </div>
-
-        </td>
-        <td class="product-date">
-            ${prod.createdAt}
-        </td>
-        <td class="product-price">
-            $ ${prod.price}
-        </td>
-        <td class="product-actions">
-            <button class="btn btn-primary btn-sm">
-                <i class="fa-solid fa-pen"></i>
-            </button>
-            <button class="btn btn-danger btn-sm">
-                <i class="fa-solid fa-trash"></i>
-            </button>
-        </td>
-</tr>`
-
-})
 
 
-{/* <tr>
-        <td class="product-image">
-            <img src="https://static.nike.com/a/images/t_default/28810afe-6b6a-4f6a-beb4-701a3539bb02/invincible-3-zapatillas-de-running-asfalto-9lqlcK.png" alt="">
-        </td>
-        <td class="product-name">
-            Zapatillas Nike
-        </td>
-        <td class="product-description">
-            Zapatillas Nike para correr en asfalto con tecnologia de amortiguacion
-        </td>
-        <td class="product-date">
-            2021-12-01
-        </td>
-        <td class="product-price">
-            $ 15000
-        </td>
-        <td class="product-actions">
-            <button class="btn btn-primary btn-sm">Editar</button>
-            <button class="btn btn-danger btn-sm">Eliminar</button>
-        </td>
-</tr> */}
+// Llamar una función específica para borrar productos
+function deleteProduct(identificador) {
+
+    // Obtener el id del producto a eliminar
+    console.log("Id recibido", identificador)
+
+    // Poder identificar el indice del producto a eliminar a través de algún método 
+    const index = products.findIndex((producto) => {
+        // Condicion yo return un true
+        if(identificador === producto.id) {
+            return true
+        } else {
+            return false
+        }
+    })
+    // Eliminar el producto del array con splice en base a su ubicación
+    products.splice(index, 1)
+    // Array.splice(indice, 1) -> Elimina un elemento del array
+    renderProducts(products)
+}
+
+// #Search product
+
+function searchProduct(evt) {
+    // Recibo un evento en este caso del tipo oninput
+    console.log(evt.target.value)
+
+    let text = evt.target.value;  // "IkE"
+
+    text = text.toLowerCase()    // "ike"
+
+    // Primero tengo que buscar en mi array los elementos que tengan como valor Name el texto que la persona a escrito
+    const productosFiltrados = products.filter((PRODUCTITO) => {
+        const nombre = PRODUCTITO.name.toLowerCase();
+        const descripcion = PRODUCTITO.description.toLowerCase();
+        // nike invecible 3
+        //
+        if(  nombre.includes(text) || descripcion.includes(text) ) {
+
+            return true
+
+        } else {
+            return false
+        }
+    })
+
+
+    console.log(productosFiltrados)
+
+
+    renderProducts(productosFiltrados)
+
+
+
+}
+
+// const tasks_list = []
+
+// function agregarTarea() {
+//     const taskInputHTML = document.getElementById("task")
+
+//     const tarea = taskInputHTML.value;
+
+//     if(tarea.length < 3) {
+//         // alert("La t")
+//         return
+//     }
+
+//     console.log(tarea)
+//     //agrego la tarea al array
+// }
+
+
+// // usando en forEach el indice y llamando esta función con dicho valor 
+// function borrarTarea(index) {
+//     // Directamente borramos en base al index recibido
+// }
+
+

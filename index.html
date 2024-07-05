@@ -33,7 +33,24 @@
 
             <div class="col-12 col-lg-8">
                 <div class="p-3">
-                    <h2>TABLA DE PRODUCTOS</h2>
+                    <h2 contenteditable="true">TABLA DE PRODUCTOS</h2>
+
+
+
+
+                    <div class="mb-3">
+
+                        <label for="search" class="form-label">Buscar</label>
+                        <input type="text" class="form-control" id="task" oninput="searchProduct(event)">
+
+                        <!-- <div class="button btn btn-success" onclick="agregarTarea()">Buscar</div> -->
+                        <!-- oninput="searchProduct(event)" -->
+                    </div>
+
+
+
+
+
 
                     <table class="table table-primary table-admin">
                         <thead>
