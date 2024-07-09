@@ -56,14 +56,20 @@ const products = [
 ]
 
 const tableBodyHTML = document.getElementById("table-body"); 
+const formAdminHTML = document.getElementById("form-admin")
 // Pintar todos los productos inicialmente
 renderProducts(products)
 
 function renderProducts(ARRAY_TO_RENDER) {
 
-    tableBodyHTML.innerHTML = ''
+    tableBodyHTML.innerHTML = '';
+
+    let total = 0;
 
     ARRAY_TO_RENDER.forEach((prod, indice) => {
+
+        total += prod.price;
+
 
         tableBodyHTML.innerHTML += `<tr>
             <td class="product-image">
@@ -80,7 +86,7 @@ function renderProducts(ARRAY_TO_RENDER) {
     
             </td>
             <td class="product-date">
-                ${prod.createdAt}
+                ${  formatTimestampToDate(prod.createdAt)   }
             </td>
             <td class="product-price">
                 $ ${prod.price}
@@ -97,7 +103,13 @@ function renderProducts(ARRAY_TO_RENDER) {
         // PARA EJERCICIO DE TAREAS USAR "indice" en deleteProduct
 
 
-    })
+    }) // #Fin del forEach
+
+    tableBodyHTML.innerHTML += `<tr>
+                                    <td colspan="4" class="text-end">TOTAL</td>
+                                    <td colspan="2" class="fw-bold">$ ${total}</td>
+                                </tr>`
+
 }
 // Recorrer el array y hacer un console.log de cada producto
 
@@ -157,6 +169,42 @@ function searchProduct(evt) {
 
 
 }
+
+formAdminHTML.addEventListener('submit', (evt) => {
+    // Prevenimos el comportamiento por defecto del formulario
+    evt.preventDefault();
+
+    const el = evt.target.elements;
+
+    console.log(el.date.value)
+
+    const nuevoProducto = {
+        name: el.name.value,
+        price: el.price.valueAsNumber,
+        category: el.category.value,
+        description: el.description.value,
+        image: el.image.value,
+        createdAt: new Date(el.date.value).getTime(),
+        id: crypto.randomUUID()
+    }
+
+    console.log(nuevoProducto)
+
+    products.push(nuevoProducto)
+
+    renderProducts(products)
+
+    formAdminHTML.reset();
+    el.name.focus()
+    // console.dir(evt.target.elements.price.value)
+    // console.dir(evt.target.elements.description.value)
+    // console.dir(evt.target.elements.category.value)
+})
+
+formAdminHTML.addEventListener('change', () => {
+    console.log(formAdminHTML.checkValidity())
+})
+
 
 // const tasks_list = []
 
