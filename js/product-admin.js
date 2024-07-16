@@ -71,35 +71,35 @@ function renderProducts(ARRAY_TO_RENDER) {
         total += prod.price;
 
 
-        tableBodyHTML.innerHTML += `<tr>
-            <td class="product-image">
-                <img src="${prod.image}" alt="${prod.name}">
-            </td>
-            <td class="product-name">
-                ${prod.name}
-            </td>
-            <td class="product-description">
-    
-                <div class="description" title="${prod.description}">
-                    ${prod.description}
-                </div>
-    
-            </td>
-            <td class="product-date">
-                ${  formatTimestampToDate(prod.createdAt)   }
-            </td>
-            <td class="product-price">
-                $ ${prod.price}
-            </td>
-            <td class="product-actions">
-                <button class="btn btn-primary btn-sm">
-                    <i class="fa-solid fa-pen"></i>
-                </button>
-                <button class="btn btn-danger btn-sm" onclick="deleteProduct('${prod.id}')">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </td>
-    </tr>`
+            tableBodyHTML.innerHTML += `<tr>
+                <td class="product-image">
+                    <img src="${prod.image}" alt="${prod.name}">
+                </td>
+                <td class="product-name">
+                    ${prod.name}
+                </td>
+                <td class="product-description">
+        
+                    <div class="description" title="${prod.description}">
+                        ${prod.description}
+                    </div>
+        
+                </td>
+                <td class="product-date">
+                    ${  formatTimestampToDate(prod.createdAt)   }
+                </td>
+                <td class="product-price">
+                    $ ${prod.price}
+                </td>
+                <td class="product-actions">
+                    <button class="btn btn-primary btn-sm" onclick="editProduct('${prod.id}')">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteProduct('${prod.id}')">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>`
         // PARA EJERCICIO DE TAREAS USAR "indice" en deleteProduct
 
 
@@ -204,6 +204,41 @@ formAdminHTML.addEventListener('submit', (evt) => {
 formAdminHTML.addEventListener('change', () => {
     console.log(formAdminHTML.checkValidity())
 })
+
+
+function editProduct(idUpdate) {
+
+    console.log("Id para actualizar", idUpdate)
+    // Deberia buscar los datos del producto indicado por ID
+    const productoEditar = products.find((producto) => {
+
+        if(idUpdate === producto.id) {
+            return true
+        }
+        // Para que find encuentre el elemento que buscamos y lo retorne o guarde en la variable "productoEditar" tenemos que retornar un true
+        return false;
+    }) 
+
+
+    const elem = formAdminHTML.elements;
+    // Rellenar el formulario con esos datos
+    elem.name.value = productoEditar.name;
+
+    elem.price.value = productoEditar.price;
+
+    elem.description.value = productoEditar.description;
+
+    elem.category.value = productoEditar.category;
+
+    elem.image.value = productoEditar.image;
+
+    elem.createdAt.value = formatTimestampToInputDate(productoEditar.createdAt)
+
+    // Modificar el botón agregar por un botón que diga editar
+    // Definir un mecanismo para saber que cuando se haga el submit poder definir si es un producto o estoy editando
+
+
+}
 
 
 // const tasks_list = []
