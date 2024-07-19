@@ -55,8 +55,29 @@ const products = [
     }
 ]
 
+// let isEditing = false;
+
 const tableBodyHTML = document.getElementById("table-body"); 
-const formAdminHTML = document.getElementById("form-admin")
+const formAdminHTML = document.getElementById("form-admin");
+const btnSubmitHTML = formAdminHTML.querySelector("button[type='submit']");
+const btnsSortHTML = document.querySelectorAll("button[data-sort]") //NodeList []
+
+
+btnsSortHTML.forEach(btn => {
+    btn.addEventListener('click', (evt) => {
+        products.sort((a, b) => {
+
+            if(a.name > b.name) return 1;
+            if(a.name < b.name) return -1;
+            return 0;
+
+        })
+
+        renderProducts(products)
+    })
+})
+
+console.log(btnSubmitHTML)
 // Pintar todos los productos inicialmente
 renderProducts(products)
 
@@ -120,6 +141,13 @@ function deleteProduct(identificador) {
     // Obtener el id del producto a eliminar
     console.log("Id recibido", identificador)
 
+    const resultado = confirm("Realmente desea borrar el producto?")
+
+    if(!resultado) { // resultado === false
+        return
+    }
+
+
     // Poder identificar el indice del producto a eliminar a través de algún método 
     const index = products.findIndex((producto) => {
         // Condicion yo return un true
@@ -176,29 +204,58 @@ formAdminHTML.addEventListener('submit', (evt) => {
 
     const el = evt.target.elements;
 
-    console.log(el.date.value)
+    console.log(el.date.value);
+
+    const idInput = el.id.value;
+
+    // let ID;
+
+    // const ID = id ? id : crypto.randomUUID() 
+    // if(id) {
+    //     ID = id
+    // } else {
+    //     ID = crypto.randomUUID()
+    // }
 
     const nuevoProducto = {
         name: el.name.value,
-        price: el.price.valueAsNumber,
+
+        price: el.price.valueAsNumber || 0,
+
         category: el.category.value,
         description: el.description.value,
         image: el.image.value,
         createdAt: new Date(el.date.value).getTime(),
-        id: crypto.randomUUID()
+        id: idInput ? id : crypto.randomUUID()
     }
 
     console.log(nuevoProducto)
 
-    products.push(nuevoProducto)
+    if(idInput) {
+        // Busco la posición del elemento que edite y lo actualizo (reemplazo)
+        // const index = products.findIndex(prod => prod.id === id);
+        const indice = products.findIndex(prod => {
+            if(id === prod.id) {
+                return true
+            }
+        });
+        products[indice] = nuevoProducto
+    } 
+    else {
+        // Sumo el elemento al array por que es un elemento nuevo
+        products.push(nuevoProducto)
+    }
 
+    el.id.value = ''
+    
     renderProducts(products)
-
     formAdminHTML.reset();
     el.name.focus()
-    // console.dir(evt.target.elements.price.value)
-    // console.dir(evt.target.elements.description.value)
-    // console.dir(evt.target.elements.category.value)
+
+    btnSubmitHTML.innerText = "Agregar producto";
+
+    btnSubmitHTML.classList.remove("btn-success")
+
 })
 
 formAdminHTML.addEventListener('change', () => {
@@ -219,9 +276,19 @@ function editProduct(idUpdate) {
         return false;
     }) 
 
+    btnSubmitHTML.innerText = "Editar producto";
+
+    btnSubmitHTML.classList.add("btn-success");
+    // btnSubmitHTML.classList.contains("btn-primary") // true o false
+
+    // isEditing = true;
+
+    // TODO: Control por si el producto NO se encontró
 
     const elem = formAdminHTML.elements;
     // Rellenar el formulario con esos datos
+    elem.id.value = productoEditar.id;
+
     elem.name.value = productoEditar.name;
 
     elem.price.value = productoEditar.price;
@@ -231,8 +298,8 @@ function editProduct(idUpdate) {
     elem.category.value = productoEditar.category;
 
     elem.image.value = productoEditar.image;
-
-    elem.createdAt.value = formatTimestampToInputDate(productoEditar.createdAt)
+    // Transformamos el formato timestamp milisegundos a un formato compatible con el input date (createdAt) "yyyy-MM-dd"
+    elem.createdAt.value = formatTimestampToInputDate(productoEditar.createdAt);
 
     // Modificar el botón agregar por un botón que diga editar
     // Definir un mecanismo para saber que cuando se haga el submit poder definir si es un producto o estoy editando
@@ -264,3 +331,4 @@ function editProduct(idUpdate) {
 // }
 
 
+// btnSubmitHTML.addEventListener('click', () => btnSubmitHTML.classList.toggle("btn-lg"))
