@@ -1,59 +1,62 @@
-const products = [
+const arrayInicial = [
     {
-      createdAt: -172800000,
-      name: "Nike Juniper Trail 2 GORE-TEX PRO",
-      image: "https://nikearprod.vtexassets.com/arquivos/ids/877894-1200-1200?width=1200&height=1200&aspect=true",
-      price: 199999,
-      description: "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-      category: "mountain",
-      id: "38"
-    },
-    {
-      createdAt: 1717113600000,
-      name: "Clifton 9",
-      image: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1660043072-hoka-bondi-8-zapatillas-running-1660043036.png?crop=1.00xw:0.823xh;0,0.0783xh&resize=980:*",
-      price: 100000,
-      description: "La novena versión de nuestra galardonada gama Clifton ofrece una versión más ligera y con más amortiguación que nunca. Las nuevas Clifton 9 reducen el peso al tiempo que añaden 3 mm de altura; además, ofrecen una experiencia revitalizada bajo los pies con una nueva espuma con capacidad de respuesta y un diseño de suela mejorado",
-      category: "running",
-      id: "43"
-    },
-    {
-      createdAt: 1716076800000,
-      name: "Nike Invencible 3 pro",
-      image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/28810afe-6b6a-4f6a-beb4-701a3539bb02/invincible-3-zapatillas-de-running-asfalto-9lqlcK.png",
-      price: 365100,
-      description: "Test de imagenmmmmmm",
-      category: "running",
-      id: "44"
-    },
-    {
-      createdAt: -27076636800000,
-      name: "Nike Air Force 1 07",
-      image: "https://nikearprod.vtexassets.com/arquivos/ids/659742-1200-1200?width=1200&height=1200&aspect=true",
-      price: 209999,
-      description: "La luminosidad sigue viva con este calzado de básquetbol original. La fusión de la comodidad de la duela y un estilo externo a la cancha le da un giro fresco a lo que mejor conoces: una confección inspirada en los años 80, detalles audaces y un estilo basquetbolero puro.",
-      category: "moda",
-      id: "46"
-    },
-    {
-      createdAt: 1719276313261,
-      name: "Nike Pegasus 39 Shield",
-      image: "https://static.nike.com/a/images/t_default/c7cee966-efba-4fc4-99ce-ab2ccacf9f81/infinityrn-4-gore-tex-zapatillas-de-running-asfalto-impermeables-BcdT0P.png",
-      price: 167999,
-      description: "Tu caballo alado regresa para ayudarte a avanzar bajo la lluvia. El acabado repelente al agua te ayuda a mantener los pies secos, mientras que una sensación cómoda, similar al tejido Fleece, en el interior mantiene los pies abrigados para carreras en climas",
-      category: "running",
-      id: "47"
-    },
-    {
-      createdAt: 1648598400000,
-      name: "Nike SB Dunk Low Pro",
-      image: "https://nikearprod.vtexassets.com/arquivos/ids/914361-1200-1200?width=1200&height=1200&aspect=true",
-      price: 209000,
-      description: "El Nike SB Dunk Low Pro ofrece el aspecto icónico del Dunk con un estilo de perfil bajo. La unidad Zoom Air en el talón y la lengüeta acolchada proporcionan un nivel de comodidad ideal para practicar skate.",
-      category: "moda",
-      id: "48"
-    }
+    createdAt: -172800000,
+    name: "nike Juniper Trail 2 GORE-TEX PRO",
+    image: "https://nikearprod.vtexassets.com/arquivos/ids/877894-1200-1200?width=1200&height=1200&aspect=true",
+    price: 199999,
+    description: "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+    category: "mountain",
+    id: "38"
+  },
+  {
+    createdAt: 1717113600000,
+    name: "Clifton 9",
+    image: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1660043072-hoka-bondi-8-zapatillas-running-1660043036.png?crop=1.00xw:0.823xh;0,0.0783xh&resize=980:*",
+    price: 100000,
+    description: "La novena versión de nuestra galardonada gama Clifton ofrece una versión más ligera y con más amortiguación que nunca. Las nuevas Clifton 9 reducen el peso al tiempo que añaden 3 mm de altura; además, ofrecen una experiencia revitalizada bajo los pies con una nueva espuma con capacidad de respuesta y un diseño de suela mejorado",
+    category: "running",
+    id: "43"
+  },
+  {
+    createdAt: 1716076800000,
+    name: "Ánvencible 3 pro",
+    image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/28810afe-6b6a-4f6a-beb4-701a3539bb02/invincible-3-zapatillas-de-running-asfalto-9lqlcK.png",
+    price: 365100,
+    description: "Test de imagenmmmmmm",
+    category: "running",
+    id: "44",
+  },
+  {
+    createdAt: -27076636800000,
+    name: "Nike Air Force 1 07",
+    image: "https://nikearprod.vtexassets.com/arquivos/ids/659742-1200-1200?width=1200&height=1200&aspect=true",
+    price: 209999,
+    description: "La luminosidad sigue viva con este calzado de básquetbol original. La fusión de la comodidad de la duela y un estilo externo a la cancha le da un giro fresco a lo que mejor conoces: una confección inspirada en los años 80, detalles audaces y un estilo basquetbolero puro.",
+    category: "moda",
+    id: "46"
+  },
+  {
+    createdAt: 1719276313261,
+    name: "Nike Pegasus 39 Shield",
+    image: "https://static.nike.com/a/images/t_default/c7cee966-efba-4fc4-99ce-ab2ccacf9f81/infinityrn-4-gore-tex-zapatillas-de-running-asfalto-impermeables-BcdT0P.png",
+    price: 167999,
+    description: "Tu caballo alado regresa para ayudarte a avanzar bajo la lluvia. El acabado repelente al agua te ayuda a mantener los pies secos, mientras que una sensación cómoda, similar al tejido Fleece, en el interior mantiene los pies abrigados para carreras en climas",
+    category: "running",
+    id: "47"
+  },
+  {
+    createdAt: 1648598400000,
+    name: "Nike SB Dunk Low Pro",
+    image: "https://nikearprod.vtexassets.com/arquivos/ids/914361-1200-1200?width=1200&height=1200&aspect=true",
+    price: 209000,
+    description: "El Nike SB Dunk Low Pro ofrece el aspecto icónico del Dunk con un estilo de perfil bajo. La unidad Zoom Air en el talón y la lengüeta acolchada proporcionan un nivel de comodidad ideal para practicar skate.",
+    category: "moda",
+    id: "48"
+  }
 ]
+
+const products = JSON.parse(localStorage.getItem("productos")) || arrayInicial;  // null
+
 
 // let isEditing = false;
 
@@ -65,13 +68,69 @@ const btnsSortHTML = document.querySelectorAll("button[data-sort]") //NodeList [
 
 btnsSortHTML.forEach(btn => {
     btn.addEventListener('click', (evt) => {
-        products.sort((a, b) => {
 
-            if(a.name > b.name) return 1;
-            if(a.name < b.name) return -1;
-            return 0;
+        const sortType = evt.currentTarget.dataset.sort;
+        const property = evt.currentTarget.dataset.prop;
 
+        const collator = new Intl.Collator("es-AR", {
+            sensitivity: "base",
+            ignorePunctuation: true,
         })
+
+        if(sortType === 'asc') {
+            products.sort((a, b) => {
+                return collator.compare(a[property], b[property])
+            })
+        } else {
+            products.sort((a, b) => {
+                return collator.compare(b[property], a[property])
+            })
+        }
+
+        // if(sortType === 'asc') {
+        //     products.sort((a, b) => {
+
+        //         // if(typeof a[property] === "string") {
+        //         //     if(a[property].toLowerCase() > b[property].toLowerCase()) return 1;
+        //         //     if(a[property].toLowerCase() < b[property].toLowerCase()) return -1;
+        //         //     return 0;
+        //         // } 
+        //         // else if(typeof a[property] === "number") {
+        //         //     if(a[property] > b[property]) return 1;
+        //         //     if(a[property] < b[property]) return -1;
+        //         //     return 0;
+        //         // }
+
+        //         switch(typeof a[property]) {
+        //             case "string":
+        //                 if(a[property].toLowerCase() > b[property].toLowerCase()) return 1;
+        //                 if(a[property].toLowerCase() < b[property].toLowerCase()) return -1;
+        //                 return 0;
+        //             case "number":
+        //                 if(a[property] > b[property]) return 1;
+        //                 if(a[property] < b[property]) return -1;
+        //                 return 0;
+        //         }
+
+    
+        //     })
+        // } else {
+        //     products.sort((a, b) => {
+        //         if(typeof a[property] === "string") {
+        //             if(a[property].toLowerCase() > b[property].toLowerCase()) return -1;
+        //             if(a[property].toLowerCase() < b[property].toLowerCase()) return 1;
+        //             return 0;
+        //         } 
+        //         else if(typeof a[property] === "number") {
+        //             if(a[property] > b[property]) return -1;
+        //             if(a[property] < b[property]) return 1;
+        //             return 0;
+        //         }
+        //     })
+           
+        // }
+
+        
 
         renderProducts(products)
     })
@@ -141,26 +200,47 @@ function deleteProduct(identificador) {
     // Obtener el id del producto a eliminar
     console.log("Id recibido", identificador)
 
-    const resultado = confirm("Realmente desea borrar el producto?")
+    // const resultado = confirm("Realmente desea borrar el producto?")
 
-    if(!resultado) { // resultado === false
-        return
-    }
+    // if(!resultado) { // resultado === false
+    //     return
+    // }
 
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Una vez eliminado, no podrás recuperar el producto",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+        reverseButtons: true,
+        customClass: {
+            confirmButton: "btn-alert",
+        },
+    }).then((result) => {
+        if(result.isConfirmed) {
+            // Poder identificar el indice del producto a eliminar a través de algún método 
+            const index = products.findIndex((producto) => {
+                // Condicion yo return un true
+                if(identificador === producto.id) {
+                    return true
+                } else {
+                    return false
+                }
+            })
+            // Eliminar el producto del array con splice en base a su ubicación
+            products.splice(index, 1)
+            // Array.splice(indice, 1) -> Elimina un elemento del array
+            renderProducts(products)
 
-    // Poder identificar el indice del producto a eliminar a través de algún método 
-    const index = products.findIndex((producto) => {
-        // Condicion yo return un true
-        if(identificador === producto.id) {
-            return true
-        } else {
-            return false
+            localStorage.setItem("productos", JSON.stringify(products))
+            
+            Swal.fire("Producto eliminado", "El producto fue eliminado correctamente", "success");
+
         }
     })
-    // Eliminar el producto del array con splice en base a su ubicación
-    products.splice(index, 1)
-    // Array.splice(indice, 1) -> Elimina un elemento del array
-    renderProducts(products)
+
+    
 }
 
 // #Search product
@@ -226,7 +306,7 @@ formAdminHTML.addEventListener('submit', (evt) => {
         description: el.description.value,
         image: el.image.value,
         createdAt: new Date(el.date.value).getTime(),
-        id: idInput ? id : crypto.randomUUID()
+        id: idInput ? idInput : crypto.randomUUID()
     }
 
     console.log(nuevoProducto)
@@ -235,20 +315,34 @@ formAdminHTML.addEventListener('submit', (evt) => {
         // Busco la posición del elemento que edite y lo actualizo (reemplazo)
         // const index = products.findIndex(prod => prod.id === id);
         const indice = products.findIndex(prod => {
-            if(id === prod.id) {
+            if(idInput === prod.id) {
                 return true
             }
         });
-        products[indice] = nuevoProducto
+        products[indice] = nuevoProducto;
+        Swal.fire({
+            title: "Producto actualizado",
+            text: "El producto fue actualizado correctamente",
+            icon: "info",
+        })
     } 
     else {
         // Sumo el elemento al array por que es un elemento nuevo
-        products.push(nuevoProducto)
+        products.push(nuevoProducto);
+
+        Swal.fire({
+            title: "El producto agregado",
+            text: "El producto fue agregado correctamente",
+            icon: "success",
+            timer: 2500
+        })
     }
 
     el.id.value = ''
     
     renderProducts(products)
+    localStorage.setItem("productos", JSON.stringify(products))
+
     formAdminHTML.reset();
     el.name.focus()
 

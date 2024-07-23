@@ -11,6 +11,9 @@
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Estilos CSS -->
      <link rel="stylesheet" href="/css/styles.css">
 
@@ -21,6 +24,7 @@
           <span class="navbar-brand mb-0 h1 text-white">Product Dashboard</span>
         </div>
       </nav>
+      <a href="/pages/contact.html">Contact</a>
     
     <div class="container-xxl">
         <div class="row g-2">
@@ -100,14 +104,28 @@
                         </div>
 
                         <div class="col-2 text-end">
-                            <button class="btn btn-primary" data-sort="desc" data-id="dasdsa" data-otra="dasdasdas">
+                            <button class="btn btn-primary" data-sort="desc" data-id="dasdsa" data-prop="name" data-otra="dasdasdas">
                                 <i class="fa-solid fa-caret-down"></i>
                             </button>
 
-                            <button class="btn btn-primary" data-sort="asc">
+                            <button class="btn btn-primary" data-sort="asc" data-prop="name">
+                                <i class="fa-solid fa-caret-up"></i>
+                            </button>
+                            <button class="btn btn-info" data-sort="desc" data-prop="description" data-id="dasdsa" data-otra="dasdasdas">
+                                <i class="fa-solid fa-caret-down"></i>
+                            </button>
+
+                            <button class="btn btn-info" data-sort="asc" data-prop="description">
                                 <i class="fa-solid fa-caret-up"></i>
                             </button>
 
+                            <button class="btn btn-warning" data-sort="desc" data-prop="price" data-id="dasdsa" data-otra="dasdasdas">
+                                <i class="fa-solid fa-caret-down"></i>
+                            </button>
+
+                            <button class="btn btn-warning" data-sort="asc" data-prop="price">
+                                <i class="fa-solid fa-caret-up"></i>
+                            </button>
                             <!-- <button class="btn btn-primary" data-sort="asc">
                                 <i class="fa-solid fa-caret-up"></i>
                             </button> -->
